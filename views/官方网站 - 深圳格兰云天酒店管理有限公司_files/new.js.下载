@@ -1,0 +1,421 @@
+$(function () {
+    var room_num = $('.new_page b.room_num').html();
+    var ren_num = $('.new_page b.ren_num').html();
+    var room_num2 = $('.new_page b.room_num2').html();
+    var ren_num2 = $('.new_page b.ren_num2').html();
+    $('.p_more .dl1 dd').eq(0).addClass('ac');
+    $('.p_more .dl2').eq(0).show();
+    $('.shuru .div3').eq(3).show();
+    $('.p_more .dl1 dd').click(function () {
+        $(this).addClass('ac').siblings().removeClass('ac');
+        $('.p_more .dl2').eq($(this).index()).show().siblings('.dl2').hide();
+    });
+    $('.p_more .dl2 dd').click(function () {
+        $(this).parents('li').find('b').html($(this).html());
+        $('#address').val($(this).html());
+        $('.p_more').hide();
+        $('.r_img').css({ 'padding-top': 15 + 'px' }).attr({ 'src': 'images/web/xia.png', 'data': 2 });
+        $('.book_new .cont li.place').css({ 'color': '#373A42' });
+    });
+    $('.p_more,.book_new .cont li,.rn,.left_book li').click(function (event) {
+        event.stopPropagation();
+    });
+    $('.book_new .cont li.item').click(function () {
+        if($(this).index()!=2){
+            $('body,html').animate({'scrollTop':300+'px'});
+        }  
+        $(this).addClass('ac').siblings().removeClass('ac');
+        $('.ta_calendar_footer .frm_btn input').click();
+        $(this).siblings('li').find('.r_img').attr('src', '/images/web/xia.png').removeAttr('data');
+        if ($(this).find('.r_img').attr('data') == 1) {
+            $(this).find('.r_img').css({ 'padding-top': 15 + 'px' }).attr({ 'src': '/images/web/xia.png', 'data': 2 });
+        } else {
+            $(this).find('.r_img').css({ 'padding-top': 12 + 'px' }).attr({ 'src': '/images/web/li_close.png', 'data': 1 });
+        }
+        if ($(this).index() == 0) {
+            $('.p_more').toggle();
+            $('.book_new .cont .rn').hide();
+        } else if ($(this).index() == 1) {
+            $('.date_title').click();
+            $('.p_more,.rn').hide();
+        } else if ($(this).index() == 3) {
+            $('.room_num .rn').toggle();
+            $('.p_more,.xieyi .rn').hide();
+        } else if ($(this).index() == 4) {
+            $('.xieyi .rn').toggle();
+            $('.p_more,.room_num .rn').hide();
+        } else if ($(this).index() == 5) {
+            $('.p_more,.room_num .rn,.xieyi .rn').hide();
+        }
+    });
+
+    $('.book_new .cont li img.r_img').click(function (event) { 
+        $('.ta_calendar_footer .frm_btn input').click();
+        $(this).parents('li').siblings('li').find('.r_img').attr('src', '/images/web/xia.png').removeAttr('data');
+        if ($(this).attr('data') == 1) {
+            $('.ta_calendar_footer .frm_btn input').click();
+            $(this).css({ 'padding-top': 15 + 'px' }).attr({ 'src': '/images/web/xia.png', 'data': 2 });
+        } else {
+            $(this).siblings('.date_title').click();
+             $('.p_more,.rn').hide();
+            $(this).css({ 'padding-top': 12 + 'px' }).attr({ 'src': '/images/web/li_close.png', 'data': 1 });
+        }
+        $(this).siblings('div').toggle();
+        event.stopPropagation();
+    });
+
+    $(document).click(function () {
+        $('.p_more,.rn').hide();
+        $('.r_img').css({ 'padding-top': 15 + 'px' }).attr({ 'src': 'images/web/xia.png', 'data': 2 });
+    });
+    function num1(obj){
+        obj.click(function () {
+            room_num++;
+            if (room_num > 1) {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut2.png');
+            } else {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut.png');
+            }
+            $(this).siblings('span').html(room_num);
+            $('#rooms').val(room_num);
+            obj.parents('.rn').siblings().find('b').eq(0).html(room_num);
+        });
+    };
+    num1($('.rn .add').eq(0));
+    function num2(obj){
+        obj.click(function () {
+            room_num--;
+            if (room_num < 2) {
+                room_num = 1;
+                $(this).find('img').attr('src', '/images/web/cut.png');
+            } else {
+                $(this).find('img').attr('src', '/images/web/cut2.png');
+            }
+            $(this).siblings('span').html(room_num);
+            $('#rooms').val(room_num);
+           obj.parents('.rn').siblings().find('b').eq(0).html(room_num);
+        });
+    };
+    num2($('.rn .cut').eq(0));
+    function num3(obj){
+        obj.click(function () {
+            ren_num++;
+            if (ren_num > 1) {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut2.png');
+            } else {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut.png');
+            }
+            $(this).siblings('span').html(ren_num);
+            $('#nums').val(ren_num);
+            obj.parents('.rn').siblings().find('b').eq(1).html(ren_num);
+        });
+    };
+    num3($('.rn .add').eq(1));
+    function num4(obj){
+        obj.click(function () {
+            ren_num--;
+            if (ren_num < 2) {
+                ren_num = 1;
+                $(this).find('img').attr('src', '/images/web/cut.png');
+            } else {
+                $(this).find('img').attr('src', '/images/web/cut2.png');
+            }
+            $(this).siblings('span').html(ren_num);
+            $('#nums').val(ren_num);
+            obj.parents('.rn').siblings().find('b').eq(1).html(ren_num);
+        });
+    };
+    num4($('.rn .cut').eq(1));
+    $('.choose_date li.rs').click(function(event){
+        $(this).find('.rn').toggle();
+        event.stopPropagation();
+    });
+    function num5(obj){
+        obj.click(function () {
+            room_num2++;
+            if (room_num2 > 1) {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut2.png');
+            } else {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut.png');
+            }
+            $(this).siblings('span').html(room_num2);
+            
+            obj.parents('.rn').siblings().find('.room_num2').html(room_num2);
+        });
+    };
+    num5($('.rn .add').eq(2));
+    function num6(obj){
+        obj.click(function () {
+            room_num2--;
+            if (room_num2 < 2) {
+                room_num2 = 1;
+                $(this).find('img').attr('src', '/images/web/cut.png');
+            } else {
+                $(this).find('img').attr('src', '/images/web/cut2.png');
+            }
+            $(this).siblings('span').html(room_num2);
+           
+           obj.parents('.rn').siblings().find('.room_num2').html(room_num2);
+        });
+    };
+    num6($('.rn .cut').eq(2));
+    function num7(obj){
+        obj.click(function () {
+            ren_num2++;
+            if (ren_num2 > 1) {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut2.png');
+            } else {
+                $(this).siblings('b').find('img').attr('src', '/images/web/cut.png');
+            }
+            $(this).siblings('span').html(ren_num2);
+          
+            obj.parents('.rn').siblings().find('.ren_num2').html(ren_num2);
+        });
+    };
+    num7($('.rn .add').eq(3));
+    function num8(obj){
+        obj.click(function () {
+            ren_num2--;
+            if (ren_num2 < 2) {
+                ren_num2 = 1;
+                $(this).find('img').attr('src', '/images/web/cut.png');
+            } else {
+                $(this).find('img').attr('src', '/images/web/cut2.png');
+            }
+            $(this).siblings('span').html(ren_num2);
+          
+            obj.parents('.rn').siblings().find('.ren_num2').html(ren_num2);
+        });
+    };
+    num8($('.rn .cut').eq(3));
+
+    $('.rn .div2 a.chong').click(function () {
+        room_num = 1;
+        ren_num = 1;
+        $('.rn .div span').eq(0).html(room_num);
+        $('.rn .div span').eq(1).html(ren_num);
+        li_num();
+    });
+    function li_num() {
+        $('.new_page b.ren_num').html(ren_num);
+        $('.new_page b.room_num').html(room_num);
+    };
+
+    $('.rn .div2 a.ok').click(function () {
+        $(this).parents('.rn').hide();
+        $('.r_img').attr('src', '/images/web/xia.png').removeAttr('data');
+    });
+
+    $('.rn li').click(function () {
+        $(this).addClass('ac').siblings().removeClass('ac');
+        $(this).parents('.xieyi').find('b').html($(this).html());
+        $('.shuru .div3').eq($(this).index()).show().siblings('.div3').hide();
+        $('#type').val($(this).attr('value'));
+        if($(this).index()==3){
+            $('.rn .div2 a.ok').click();
+        }
+    });
+
+    $('.book_new .cont li.jd').click(function (event) {
+        console.log($(this).find('input').val());
+        if ($(this).find('input').val() == 0) {
+            $(this).find('input').val(1).attr('checked', true);
+        } else {
+            $(this).find('input').val(0).attr('checked', false);
+        }
+        return false;
+    });
+    $('.left_book li.l_place').click(function () {
+        $('.p_more').toggle();
+        $('.left_book .rn').hide();
+    });
+
+    $('.left_book li.rs').click(function () {
+        $('.left_book .rn').toggle();
+        $('.p_more').hide();
+    });
+    $('.left_book li.msg').click(function () {
+        $('.p_more,.left_book .rn').hide();
+    });
+
+	
+	$('.left_book li.xieyi').click(function () {
+		
+        $('.xieyi .rn').toggle();
+		$('.p_more,.rs .rn').hide();
+		$('.shuru .div3').eq(3).show().siblings('.div3').hide();
+      
+    });
+	
+	
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            $('.fix_ul li.return').fadeIn();
+        } else {
+            $('.fix_ul li.return').fadeOut();
+        }
+    });
+    $('.fix_ul li.return').click(function () {
+        $('body,html').animate({ 'scrollTop': 0 }, 'fast');
+    });
+    var index;
+    var index2;
+    $('.fapiao .f_radio label').click(function () {
+        if ($(this).index() == 0) {
+            $('.fapiao').css({ 'height': 300 + 'px' });
+
+
+        } else if ($(this).index() == 1) {
+            $('.fapiao').css({ 'height': 360 + 'px' });
+
+            if (index == 1) {
+                $('.fapiao').css({ 'height': 400 + 'px' });
+            }
+        } else {
+            $('.fapiao').css({ 'height': 540 + 'px' });
+
+        }
+        index2 = $(this).index();
+        ;
+        $('.room_list .radio label input').eq($(this).index()).attr('checked', true);
+        $('.fapiao .form').eq($(this).index()).show().siblings('.form').hide();
+    });
+    $('.fapiao .form select').change(function () {
+        index = $('.fapiao .form select').find('option:selected').index();
+
+        if (index == 0) {
+            $('.fapiao').css({ 'height': 360 + 'px' });
+            index2 = index + 1;
+        } else {
+            $('.fapiao').css({ 'height': 400 + 'px' });
+            index2 = index + 3;
+        }
+        $('.fapiao .item').eq(index).show().siblings('.item').hide();
+    });
+    $('.fapiao .f_close,.fapiao .p a').click(function () {
+        $('.new_model.rm,.fapiao').hide();
+        if ($('#isfp').val() == 4) {
+            $('.room_list .radio label input').eq(1).attr('checked', true);
+            return false;
+        }
+        $('.room_list .radio label input').eq($('#isfp').val()).attr('checked', true);
+    });
+    function fpvalue() {
+        var isInvoice = document.getElementById("isfp").value;
+
+        if (isInvoice == "1") {
+            document.getElementById("crsMark").value = "{【增值税普通发票】发票抬头(个人)：" + document.getElementById("ordinaryUserNameTxt").value + "}";
+        }
+        else if (isInvoice == "4") {
+            document.getElementById("crsMark").value = "{【增值税普通发票】发票抬头(公司)：" + document.getElementById("ordinaryCompanyTxt").value + ";纳税人识别码:" + document.getElementById("ordinaryCodeTxt").value + ";}";
+        }
+        else if (isInvoice == "2") {
+            document.getElementById("crsMark").value = "{【增值税专用发票】公司名称：" + document.getElementById("specialCompanyTxt").value + ";税号：" + document.getElementById("specialCodeTxt").value + ";公司地址：" + document.getElementById("specialAddressTxt").value + ";注册电话：" + document.getElementById("specialPhoneTxt").value + ";开户银行：" + document.getElementById("specialBankTxt").value + ";银行账户：" + document.getElementById("specialBankCardTxt").value + ";}";
+        }
+    };
+    function bclick() {
+        $('#isfp').val(index2);
+        $('.new_model.rm,.fapiao').hide();
+        $('.fapiao .form').eq(index2).siblings('.form').find('input[type="text"]').val('');
+        fpvalue();
+    };
+    $('.fapiao .p input').click(function () {
+        var nums = 0;
+        if (index2 == 1) {
+            $('.fapiao .item').eq(0).find('input').each(function (index, element) {
+                if (!$('.fapiao .item').eq(0).find('input').eq(index).val()) {
+                    alert('请补全发票信息！');
+                    return false;
+                } else {
+                    nums++;
+                    if (nums == $('.fapiao .item').eq(0).find('input').length) {
+                        bclick();
+                    }
+                }
+            });
+        } else if (index2 == 4) {
+            $('.fapiao .item').eq(1).find('input').each(function (index, element) {
+                if (!$('.fapiao .item').eq(1).find('input').eq(index).val()) {
+                    alert('请补全发票信息！');
+                    return false;
+                } else {
+                    nums++;
+                    if (nums == $('.fapiao .item').eq(1).find('input').length) {
+                        bclick();
+                    }
+                }
+            });
+        } else {
+            $('.fapiao .form').eq(2).find('input').each(function (index, element) {
+                if (!$('.fapiao .form').eq(2).find('input').eq(index).val()) {
+                    alert('请补全发票信息！');
+                    return false;
+                } else {
+                    nums++;
+                    if (nums == $('.fapiao .form').eq(2).find('input').length) {
+                        bclick();
+                    }
+                }
+            });
+        }
+
+    });
+    $('.room_list .radio label').click(function () {
+        if ($(this).index() == 0) {
+            $('#isfp').val(0);
+            $('#crsMark').val('');
+            return;
+        }
+        $('.fapiao .f_radio label').eq($(this).index()).click();
+        $('.new_model.rm,.fapiao').show();
+    });
+    $('.ast1.kjuserLogin,.li-show,.a-login').click(function () {
+        $('.vip_login,.new_model').show();
+        $('.li-show').find('input').attr('checked', false);
+    });
+    $('.vip_close').click(function () {
+        $('.vip_login,.new_model').hide();
+    });
+    $('.ast1.trigger,.new_page #mbg_s1 .submenu').hover(function () {
+        $('.new_page #mbg_s1 .submenu').show();
+    }, function () {
+        $('.new_page #mbg_s1 .submenu').hide();
+    });
+      $('.ast2.trigger02,.submenu02').hover(function () {
+        $('.submenu02').show();
+    }, function () {
+        $('.submenu02').hide();
+    });
+    //Ê×Ò³¿ÉÒÔÒýÓÃ×öbannerÇÐ»»
+    function banner(obj, obj2) {
+        var dindex = 0, timer = null;
+        function dbanner() {
+            $(obj).eq(dindex).addClass('ac').siblings().removeClass('ac');
+            $(obj2).eq(dindex).fadeIn('slow').siblings().fadeOut('slow');
+            $('.banner_content p').eq(dindex).show().siblings('p').hide();
+        };
+        dbanner();
+        /*$(obj2).eq(dindex).show();*/
+        $(obj).hover(function () {
+            dindex = $(this).index();
+            dbanner();
+            clearInterval(timer);
+        }, function () {
+            interval();
+        });
+        function interval() {
+            timer = setInterval(function () {
+                dindex++;
+                if (dindex > $(obj2).length - 1) {
+                    dindex = 0;
+                }
+                dbanner();
+
+            }, 3000);
+        }
+        interval();
+    };
+
+    banner('.new_ol li', '#mbox_index_banner img');
+
+});

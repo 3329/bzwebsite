@@ -4,14 +4,29 @@ html {
     color: -internal-root-color;
 }
 
-div {
-    display: block;
+body {
+    margin: 0px auto; 
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px; 
+    letter-spacing: 0.5px; 
+    min-width: 960px;
+    font: 13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+    color: #333; 
+    line-height: 1.6;
+    background: #fff;
 }
 
-body {
-    margin: 0; 
-    padding: 0; 
-    font: 14px/1.5 "Georgia", "fantasy","Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+html, body {
+    height: 100%; 
+}
+
+* {
+    border-radius: 0 !important;
+}
+
+div {
+    display: block;
 }
 
 ul, ol, menu {
@@ -28,6 +43,27 @@ a {
     text-decoration: none; 
     color: #666666;
 }
+
+
+.container_24 {
+    zoom: 1; 
+    margin: 0 auto; 
+    width: 960px; 
+}
+
+.container_24 .grid_24 {
+    width: 950px; 
+}
+
+#b_header {
+    height: 102px; 
+}
+
+.grid_4
+
+
+
+
 
 .header {
     width: 100%; 

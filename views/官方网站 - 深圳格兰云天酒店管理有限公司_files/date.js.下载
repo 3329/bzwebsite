@@ -1,0 +1,27 @@
+var date=new Date();
+var nextDate = new Date(date.getTime() + 24*60*60*1000);
+
+                            var y=date.getFullYear();
+                            var m=date.getMonth()+1;
+                            var d=date.getDate();
+                            var y2=nextDate.getFullYear();
+                            var m2=nextDate.getMonth()+1;
+                            var d2=nextDate.getDate();
+                            m=m<10 ? '0'+m : m;
+                            d=d<10 ? '0'+d : d;
+                            m2=m2<10 ? '0'+m2 : m2;
+                            d2=d2<10 ? '0'+d2 : d2;
+var dateRange1 = new pickerDateRange('date1', {
+    startDate: y + "-" + m + "-" + d,
+    endDate: y2 + "-" + m2 + "-" + d2,
+    isTodayValid: true,
+    needCompare: false,
+    autoSubmit: true,
+    inputTrigger: 'input_trigger1',
+    theme: 'ta',
+    success: function () {
+        $('.book_new .cont li.date .r_img').css({'padding-top':15+'px'}).attr('src', '/images/web/xia.png');
+        $('#indata').val($('#startDate').val());
+        $('#outdata').val($('#endDate').val());
+    }
+});

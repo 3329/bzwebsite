@@ -1,0 +1,67 @@
+.add_menue{width:75px; height:46px;color:#fff; text-align:center;background:#575d68; filter:alpha(opacity=90);-moz-opacity:0.9;-khtml-opacity: 0.9;opacity: 0.9; padding-top:6px;}
+.add_menue a{ display:block; line-height:20px; color:#fff;}
+.add_menue{top:0px; left:0px; _left:0px;float:left;}
+.login_menue{ position:absolute; width:75px;top:19px; left:222px; *left:690px;float:left;padding-top:10px;display:none;}
+#tel{ float:right;}
+.adddw{position:relative;}
+span.STYLE2{display:none;}
+/*ʽ*/
+.select-box
+{
+	position:relative;
+	*position:inherit;
+}
+#tip-select {
+	display: none;
+	background-color: white;
+	position: absolute;
+	z-index:999;
+	border: 1px solid #c3c3c3;	
+}
+#tip-select ul
+{
+	width:auto;
+	padding-left:0px;
+}
+#tip-select ul li {
+	display: block;
+	float: left;
+	width: 100%;
+	height:20px;
+	line-height: 20px;
+	text-indent: 5px;
+	overflow: hidden;
+	color: #6D6565;
+	cursor:pointer;
+}
+#tip-select ul li.current_a 
+{
+	COLOR: #fff;
+	BACKGROUND-COLOR: #ccc;
+}
+#tip-select ul li.selected_a 
+{
+	BACKGROUND-COLOR: #ddd;
+}
+.divinput1 
+{
+	color: #616161; 
+	height:20px; 
+	line-height:20px;
+	border: #c3c3c3 1px solid; 
+	cursor:pointer;
+}
+/*subbar*/
+p#mmenu * {
+  display: block;
+  float: left;
+}
+.mbox_index_right_mid{background:url(http://www.gshmhotels.com/cn/images/index/bg_mid.png) !important;}
+#mcloud4 .form{display:none;}
+#mcloud4 form .form{display:block;}
+#mbg_s1 .submenu{display: none; position: absolute; top: 32px; left: 485px; z-index: 9999; width: 400px; padding: 20px; background-color: #74808E;}
+#mbg_s1 .submenu li{ float: left; width: 200px; height: 30px; line-height: 30px;}
+#mbg_s1 .submenu li a{ color: #fff;}
+.booking_wrap{top:150px !important;}
+#tlogo{height:72px;}
+#tlogo img{height:100%;}
